@@ -1,6 +1,7 @@
 
 using API.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace API
 {
@@ -29,6 +30,11 @@ namespace API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors(options => 
+                options.WithOrigins("http://localhost:4200")
+                .AllowAnyMethod()
+                .AllowAnyHeader());     
 
             app.UseHttpsRedirection();
 
