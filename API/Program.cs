@@ -55,7 +55,7 @@ namespace API
             }
 
             app.UseCors(options => 
-                options.WithOrigins("https://localhost:4200")
+                options.WithOrigins("http://localhost:4200", "https://localhost:4200")
                 .AllowAnyMethod()
                 .AllowAnyHeader());     
 

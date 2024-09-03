@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterOutlet } from '@angular/router';
+import { NavComponent } from './nav/nav.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, NavComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -23,7 +24,16 @@ export class AppComponent implements OnInit {
   }
 
   getUsers() {
-    this.http.get("http://localhost:5066/api/users")
+    // // http
+    // this.http.get("http://localhost:5066/api/users")
+    // .subscribe((res:any) => {
+    //   this.users = res;
+    // }, error => {
+    //   console.log(error);
+    // });
+
+    // https
+    this.http.get("https://localhost:7118/api/users")
     .subscribe((res:any) => {
       this.users = res;
     }, error => {
