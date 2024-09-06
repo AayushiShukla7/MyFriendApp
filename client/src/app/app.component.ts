@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import { AccountService } from './_services/account.service';
     CommonModule, 
     NavComponent, 
     FormsModule, 
-    BsDropdownModule
+    BsDropdownModule,
+    HomeComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
