@@ -5,6 +5,8 @@ import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { User } from './_models/user';
+import { AccountService } from './_services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -24,10 +26,16 @@ export class AppComponent implements OnInit {
   title = 'My Friend App';
   users: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private accountService: AccountService) {}
 
   ngOnInit() {
     this.getUsers();
+    this.SetCurrentUser();
+  }
+
+  SetCurrentUser() {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+    this.accountService.SetCurrentUser(user);
   }
 
   getUsers() {
