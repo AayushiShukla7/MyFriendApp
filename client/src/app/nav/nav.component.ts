@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { Observable } from 'rxjs';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-nav',
@@ -17,19 +19,27 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 })
 export class NavComponent implements OnInit {
   data: any = {};
-  loggedIn: boolean;
+  //loggedIn: boolean;
+  //currentUser$: Observable<User>;
 
-  constructor(private accountService: AccountService) {}
+  constructor(public accountService: AccountService) {}
 
   ngOnInit(): void {
-    this.getCurrentUser();
+    //this.getCurrentUser();
+    //this.currentUser$ = this.accountService.currentUser$;
   }
  
   login() {
     //console.log(this.data);
+    // this.accountService.login(this.data).subscribe(response => {
+    //   console.log(response);
+    //   this.loggedIn = true;
+    // }, error => {
+    //   console.log(error);
+    // });
+
     this.accountService.login(this.data).subscribe(response => {
       console.log(response);
-      this.loggedIn = true;
     }, error => {
       console.log(error);
     });
@@ -37,14 +47,15 @@ export class NavComponent implements OnInit {
 
   logout() {
     this.accountService.logout();
-    this.loggedIn = false;
+    //this.loggedIn = false;
   }
 
-  getCurrentUser() {
-    this.accountService.currentUser$.subscribe(user => {
-      this.loggedIn = !!user;   // !! --> Turns an object into boolean
-    }, error => {
-      console.log(error);
-    });
-  }
+  // Not needed anymore --> Using AccountService's version 
+  // getCurrentUser() {
+  //   this.accountService.currentUser$.subscribe(user => {
+  //     this.loggedIn = !!user;   // !! --> Turns an object into boolean
+  //   }, error => {
+  //     console.log(error);
+  //   });
+  // }
 }
