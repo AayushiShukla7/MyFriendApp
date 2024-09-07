@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideHttpClient(),
     provideAnimations(),
-    { provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }
+    { provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } },
+    provideToastr()
   ]
 };

@@ -7,6 +7,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 import { HomeComponent } from './home/home.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     BsDropdownModule,
     HomeComponent,
     RouterOutlet,
-    RouterLink
+    RouterLink,
+    ToastrModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

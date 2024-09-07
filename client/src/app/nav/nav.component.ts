@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 // import { Observable } from 'rxjs';
 // import { User } from '../_models/user';
 
@@ -25,7 +26,7 @@ export class NavComponent implements OnInit {
   //loggedIn: boolean;
   //currentUser$: Observable<User>;
 
-  constructor(public accountService: AccountService) {}
+  constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     //this.getCurrentUser();
@@ -43,13 +44,16 @@ export class NavComponent implements OnInit {
 
     this.accountService.login(this.data).subscribe(response => {
       console.log(response);
+      this.router.navigateByUrl('/members');
     }, error => {
       console.log(error);
+      this.toastr.error(error.error, "", { positionClass: 'toast-bottom-right' });
     });
   }
 
   logout() {
     this.accountService.logout();
+    this.router.navigateByUrl('/');
     //this.loggedIn = false;
   }
 
