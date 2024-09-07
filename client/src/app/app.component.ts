@@ -1,27 +1,22 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 import { HomeComponent } from './home/home.component';
-import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './_modules/shared.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet, 
-    CommonModule, 
+  imports: [     
     NavComponent, 
-    FormsModule, 
-    BsDropdownModule,
-    HomeComponent,
-    RouterOutlet,
-    RouterLink,
-    ToastrModule
+    FormsModule,     
+    HomeComponent,    
+    SharedModule,
+    RouterOutlet, 
+    RouterLink
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
