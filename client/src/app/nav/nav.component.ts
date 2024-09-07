@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { Observable } from 'rxjs';
-import { User } from '../_models/user';
+import { RouterLink, RouterOutlet } from '@angular/router';
+// import { Observable } from 'rxjs';
+// import { User } from '../_models/user';
 
 @Component({
   selector: 'app-nav',
@@ -12,7 +13,9 @@ import { User } from '../_models/user';
   imports: [
     FormsModule, 
     CommonModule,
-    BsDropdownModule
+    BsDropdownModule,
+    RouterOutlet,
+    RouterLink
   ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'

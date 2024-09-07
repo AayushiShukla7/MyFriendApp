@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -17,7 +17,9 @@ import { HomeComponent } from './home/home.component';
     NavComponent, 
     FormsModule, 
     BsDropdownModule,
-    HomeComponent
+    HomeComponent,
+    RouterOutlet,
+    RouterLink
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
