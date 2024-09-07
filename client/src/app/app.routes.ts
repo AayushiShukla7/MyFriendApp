@@ -12,22 +12,28 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'members',
-        component: MemberListComponent,
-        canActivate: [authGuard]
-    },
-    {
-        path: 'members/:id',
-        component: MemberDetailComponent
-    },
-    {
-        path: 'lists',
-        component: ListsComponent
-    },
-    {
-        path: 'messages',
-        component: MessagesComponent
-    },
+        path: '',
+        runGuardsAndResolvers: 'always',
+        canActivate: [authGuard],
+        children: [
+            {
+                path: 'members',
+                component: MemberListComponent
+            },
+            {
+                path: 'members/:id',
+                component: MemberDetailComponent
+            },
+            {
+                path: 'lists',
+                component: ListsComponent
+            },
+            {
+                path: 'messages',
+                component: MessagesComponent
+            }
+        ]
+    },    
     {
         // Wildcard route (when nothing matches)
         path: '**',

@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { CommonModule, TitleCasePipe } from '@angular/common';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -16,7 +16,8 @@ import { ToastrService } from 'ngx-toastr';
     CommonModule,
     BsDropdownModule,
     RouterOutlet,
-    RouterLink
+    RouterLink,
+    TitleCasePipe
   ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
