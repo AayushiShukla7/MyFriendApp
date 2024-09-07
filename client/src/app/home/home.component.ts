@@ -16,22 +16,23 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
 
   registerMode = false;
-  users: any;
+  //users: any;
   
-  constructor(private http: HttpClient) {}
+  // constructor(private http: HttpClient) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.getUsers();
+    // this.getUsers();
   }
 
   registerToggle() {
     this.registerMode = !this.registerMode;
   }
 
-  getUsers() {
-    this.http.get("https://localhost:7118/api/users")
-    .subscribe(users => this.users = users);
-  }
+  // getUsers() {
+  //   this.http.get("https://localhost:7118/api/users")
+  //   .subscribe(users => this.users = users);
+  // }
 
   cancelRegisterMode(event: boolean) {
     this.registerMode = event;
