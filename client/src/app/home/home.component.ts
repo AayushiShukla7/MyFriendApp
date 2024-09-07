@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RegisterComponent } from '../register/register.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -15,15 +16,25 @@ import { RegisterComponent } from '../register/register.component';
 export class HomeComponent implements OnInit {
 
   registerMode = false;
+  users: any;
   
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.getUsers();
   }
 
   registerToggle() {
     this.registerMode = !this.registerMode;
+  }
+
+  getUsers() {
+    this.http.get("https://localhost:7118/api/users")
+    .subscribe(users => this.users = users);
+  }
+
+  cancelRegisterMode(event: boolean) {
+    this.registerMode = event;
   }
 
 }
