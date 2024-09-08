@@ -52,6 +52,7 @@ namespace API
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+                // app.UseDeveloperExceptionPage();
             }
 
             app.UseCors(options => 
