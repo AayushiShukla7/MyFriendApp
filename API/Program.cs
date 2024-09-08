@@ -1,6 +1,7 @@
 using API.Data;
 using API.Extensions;
 using API.Interfaces;
+using API.Middleware;
 using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,8 @@ namespace API
                 app.UseSwaggerUI();
                 // app.UseDeveloperExceptionPage();
             }
+
+            app.UseMiddleware<ExceptionMiddleware>();       // Custom Exception Middleware
 
             app.UseCors(options => 
                 options.WithOrigins("http://localhost:4200", "https://localhost:4200")
