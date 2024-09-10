@@ -6,6 +6,7 @@ import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from './_modules/shared.module';
+import { MembersService } from './_services/members.service';
 
 @Component({
   selector: 'app-root',
