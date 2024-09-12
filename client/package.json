@@ -18,6 +18,8 @@
     "@angular/platform-browser": "^18.1.0",
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.1.0",
+    "@daelmaak/ngx-gallery": "^3.0.4",
+    "@vinlos/ngx-gallery": "^17.0.0",
     "bootstrap": "^5.3.3",
     "bootswatch": "^5.3.3",
     "font-awesome": "^4.7.0",
