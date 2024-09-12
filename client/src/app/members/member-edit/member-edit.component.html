@@ -4,8 +4,8 @@
     </div>
 
     <div class="col-8">
-        <div class="alert alert-info">
-            <p><strong>Information:</strong> You have made changes. Any unsaved changes will be lost.</p>
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+            <strong>Information:</strong> You have made changes. Any unsaved changes will be lost.
         </div>
     </div>
 
@@ -35,7 +35,7 @@
             </div>
 
             <div class="card-footer">
-                <button class="btn btn-success btn-block">Save Changes</button>
+                <button type="submit" style="width: 100%;" form="editForm" class="btn btn-success btn-block" [disabled]="!editForm.dirty">Save Changes</button>
             </div>
 
         </div>
@@ -45,7 +45,7 @@
         <tabset class="member-tabset">
             <tab heading="About {{ member.knownAs }}">
 
-                <form>
+                <form #editForm="ngForm" id="editForm" (submit)="updateMember()">
                     <h4>Description</h4>
                     <textarea name="introduction" rows="6" class="form-control" [(ngModel)]="member.introduction"></textarea>
                     
