@@ -3,11 +3,15 @@ import { Member } from '../../_models/member';
 import { MembersService } from '../../_services/members.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @Component({
   selector: 'app-member-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    TabsModule
+  ],
   templateUrl: './member-detail.component.html',
   styleUrl: './member-detail.component.css'
 })
