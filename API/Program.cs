@@ -42,10 +42,6 @@ namespace API
 
             builder.Services.AddIdentityServices(builder.Configuration);    // Moved to Extension method
 
-            builder.Services.AddScoped<IUserRepository, UserRepository>();  // Repository Pattern
-
-            builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);    // Automapper Injection
-
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

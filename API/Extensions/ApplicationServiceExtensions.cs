@@ -1,4 +1,5 @@
 ﻿using API.Data;
+using API.Helpers;
 using API.Interfaces;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
@@ -9,12 +10,17 @@ namespace API.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
+            services.AddScoped<ITokenService, TokenService>();  // Token Generation Service
+            services.AddScoped<IPhotoService, PhotoService>();  // Photo Upload Service
+            services.AddScoped<IUserRepository, UserRepository>();  // Repository Pattern
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);    // Automapper Injection
+
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddScoped<ITokenService, TokenService>();
+            services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));    // Image Upload API
 
             return services;
         }

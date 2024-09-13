@@ -8,6 +8,7 @@ namespace API.Entities
         public int Id { get; set; }
         public string Url { get; set; }
         public bool IsMain { get; set; }
+        public string PublicId { get; set; }
 
         // Full-Defining the relationship (between AppUser and Photos --> One-to-Many)
         public AppUser AppUser { get; set; }
