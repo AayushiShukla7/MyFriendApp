@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @Component({
   selector: 'app-member-edit',
@@ -16,7 +17,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
     CommonModule,
     FormsModule,
     TabsModule,
-    ToastrModule
+    ToastrModule,
+    NgxSpinnerModule
   ],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'

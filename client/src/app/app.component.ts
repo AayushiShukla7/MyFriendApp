@@ -6,6 +6,7 @@ import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from './_modules/shared.module';
+import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,9 @@ import { SharedModule } from './_modules/shared.module';
     HomeComponent,    
     SharedModule,
     RouterOutlet, 
-    RouterLink
+    RouterLink,
+    NgxSpinnerModule,
+    NgxSpinnerComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
