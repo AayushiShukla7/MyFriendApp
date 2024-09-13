@@ -11,6 +11,7 @@ import { jwtInterceptor } from './_interceptors/jwt.interceptor';
 import { loadingInterceptor } from './_interceptors/loading.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { FileDropDirective, FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,6 +25,7 @@ export const appConfig: ApplicationConfig = {
     { provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } },
     provideToastr(),
     provideAnimationsAsync(),
-    importProvidersFrom(NgxSpinnerModule.forRoot({ type: 'pacman' }))
+    importProvidersFrom(NgxSpinnerModule.forRoot({ type: 'pacman' })),
+    importProvidersFrom([FileUploadModule, FileSelectDirective, FileDropDirective])
   ]
 };

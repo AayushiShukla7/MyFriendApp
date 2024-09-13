@@ -9,6 +9,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { PhotoEditorComponent } from '../photo-editor/photo-editor.component';
 
 @Component({
   selector: 'app-member-edit',
@@ -18,7 +19,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     FormsModule,
     TabsModule,
     ToastrModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    PhotoEditorComponent
   ],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
