@@ -1,4 +1,4 @@
-import { CommonModule, TitleCasePipe } from '@angular/common';
+import { CommonModule, LowerCasePipe, TitleCasePipe } from '@angular/common';
 import { Component, OnInit, Pipe } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
@@ -17,7 +17,8 @@ import { ToastrService } from 'ngx-toastr';
     BsDropdownModule,
     RouterOutlet,
     RouterLink,
-    TitleCasePipe
+    TitleCasePipe,
+    LowerCasePipe
   ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
@@ -44,7 +45,6 @@ export class NavComponent implements OnInit {
     // });
 
     this.accountService.login(this.data).subscribe(response => {
-      console.log(response);
       this.router.navigateByUrl('/members');
     });
   }

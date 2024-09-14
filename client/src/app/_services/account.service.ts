@@ -20,10 +20,10 @@ export class AccountService {
   login(model: any) {
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
       map((response: User) => {
+        console.log(response.photoUrl);
         const user = response;
 
         if(user) {
-          localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
         }
       })
@@ -33,8 +33,7 @@ export class AccountService {
   register(model: any) {
     return this.http.post(this.baseUrl + 'account/register', model).pipe(
       map((user: User) => {
-        if(user) {
-          localStorage.setItem('user', JSON.stringify(user));
+        if(user) {          
           this.currentUserSource.next(user);
         }
         //return user;
@@ -43,6 +42,7 @@ export class AccountService {
   }
 
   SetCurrentUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }
 

@@ -24,12 +24,6 @@ export class PhotoEditorComponent implements OnInit {
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
   user: User;
-  
-  // fileName = '';
-  // uploadProgress:number;
-  // uploadSub: Subscription;
-  // @Input()
-  //   requiredFileType:string;
 
   constructor(private accountService: AccountService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
@@ -38,43 +32,7 @@ export class PhotoEditorComponent implements OnInit {
   ngOnInit(): void {
     this.initializeUploader();
   }
-
-  // onFileSelected(event) {
-  //   debugger;
-
-  //   const file:File = event.target.files[0];
   
-  //   if (file) {
-  //       this.fileName = file.name;
-  //       const formData = new FormData();
-  //       formData.append("thumbnail", file);
-
-  //       const upload$ = this.http.post("/api/thumbnail-upload", formData, {
-  //           reportProgress: true,
-  //           observe: 'events'
-  //       })
-  //       .pipe(
-  //           finalize(() => this.reset())
-  //       );
-      
-  //       this.uploadSub = upload$.subscribe(event => {
-  //         if (event.type == HttpEventType.UploadProgress) {
-  //           this.uploadProgress = Math.round(100 * (event.loaded / event.total));
-  //         }
-  //       })
-  //     }
-  //   }
-
-  //   cancelUpload() {
-  //     this.uploadSub.unsubscribe();
-  //     this.reset();
-  //   }
-
-  //   reset() {
-  //     this.uploadProgress = null;
-  //     this.uploadSub = null;
-  //   }
-
   fileOverBase(e: any) {
     this.hasBaseDropZoneOver = e;
   }
