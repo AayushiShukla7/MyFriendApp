@@ -22,7 +22,9 @@
         </ul>
 
         <div class="dropdown" *ngIf="(accountService.currentUser$ | async)" dropdown>
-          <!-- <img src="https://res.cloudinary.com/de3clglcb/image/upload/v1726263611/dhafcsbkuz1qrnssv9aq.jpg" alt="{{ data.username }}"> -->
+
+             <!-- TODO This is not working! Fix this. -->
+          <img src="https://res.cloudinary.com/de3clglcb/image/upload/v1726263611/dhafcsbkuz1qrnssv9aq.jpg" alt="{{ data.username }}">
           <img src="{{ data.photoUrl }}" alt="{{ data.username }}">
 
           <a class="dropdown-toggle text-light m-2" dropdownToggle>Welcome {{ data.username | titlecase }}</a>
