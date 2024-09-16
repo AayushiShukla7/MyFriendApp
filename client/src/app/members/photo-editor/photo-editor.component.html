@@ -9,7 +9,10 @@
                 [ngClass]="photo.isMain ? 'btn btn-success active' : 'btn btn-outline-success'">
                 Main
             </button>
-            <button class="btn btn-sm btn-danger m-2">
+            <button 
+                class="btn btn-sm btn-danger m-2"
+                [disabled]="photo.isMain"
+                (click)="deletePhoto(photo.id)">
                 <i class="fa fa-trash"></i>
             </button>
         </div>
@@ -28,6 +31,7 @@
     accept="image/*"
     (change)="onFileChange($event)"
     hidden
+    multiple
     #fileInput
   />
   <div class="file-dropper" (click)="fileInput.click()">
