@@ -5,6 +5,8 @@ import { AccountService } from '../_services/account.service';
 import { ToastrService } from 'ngx-toastr';
 import { SharedModule } from '../_modules/shared.module';
 import { TextInputComponent } from '../_forms/text-input/text-input.component';
+import { DateInputComponent } from '../_forms/date-input/date-input.component';
+import { daLocale } from 'ngx-bootstrap/chronos';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +17,8 @@ import { TextInputComponent } from '../_forms/text-input/text-input.component';
     SharedModule,
     JsonPipe,
     TextInputComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DateInputComponent
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -26,16 +29,25 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
   registerForm: FormGroup;
+  maxDate: Date;
 
   constructor(private accountService: AccountService, private toastr: ToastrService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.initializeForm();
+
+    this.maxDate = new Date();
+    this.maxDate.setFullYear(this.maxDate.getFullYear() -18);
   }
 
   initializeForm() {
     this.registerForm = this.fb.group({
+      gender: ['male'],
       username: ['', Validators.required],
+      knownAs: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
       confirmPassword: ['', [Validators.required, this.matchvalues('password')]],
     });
