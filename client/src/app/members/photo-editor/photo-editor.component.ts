@@ -8,6 +8,8 @@ import { User } from '../../_models/user';
 import { finalize, map, Subscription, take } from 'rxjs';
 import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { MembersService } from '../../_services/members.service';
+import { Photo } from '../../_models/photo';
 
 @Component({
   selector: 'app-photo-editor',
@@ -27,7 +29,7 @@ export class PhotoEditorComponent implements OnInit {
   baseUrl = environment.apiUrl;
   user: User;
 
-  constructor(private accountService: AccountService, private toastr: ToastrService, private http: HttpClient) {
+  constructor(private accountService: AccountService, private toastr: ToastrService, private http: HttpClient, private memberService: MembersService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
 
@@ -35,35 +37,6 @@ export class PhotoEditorComponent implements OnInit {
     //this.initializeUploader();
   }
 
-  // Idea #1
-  // fileOverBase(e: any) {
-  //   this.hasBaseDropZoneOver = e;
-  // }
-
-  // initializeUploader() {
-  //   this.uploader = new FileUploader({
-  //     url: this.baseUrl + 'users/add-photo',
-  //     authToken: 'Bearer ' + this.user.token,
-  //     isHTML5: true,
-  //     allowedFileType: ['image'],
-  //     removeAfterUpload: true,
-  //     autoUpload: false,
-  //     maxFileSize: 10 * 1024 *1024
-  //   });
-
-  //   this.uploader.onAfterAddingFile = (file) => {
-  //     file.withCredentials = false;
-  //   }
-
-  //   this.uploader.onSuccessItem = (item, response, status, headers) => {
-  //     if(response) {
-  //       const photo = JSON.parse(response);
-  //       this.member.photos.push(photo);
-  //     }
-  //   }
-  // }
-
-  // Idea #2
   imageName = signal('');
   fileSize = signal(0);
   uploadProgress = signal(0);
@@ -137,6 +110,18 @@ export class PhotoEditorComponent implements OnInit {
     this.uploadSuccess = false;
     this.uploadError = false;
     this.uploadProgress.set(0);
+  }
+
+  setMainPhoto(photo: Photo) {
+    this.memberService.setMainPhoto(photo.id).subscribe(() => {
+      this.user.photoUrl = photo.url;
+      this.accountService.SetCurrentUser(this.user);
+      this.member.photoUrl = photo.url;
+      this.member.photos.forEach(p => {
+        if(p.isMain) p.isMain = false;  // Unset old Main photo
+        if(p.id == photo.id) p.isMain = true; // Set new Main photo
+      })
+    });
   }
 
 }
