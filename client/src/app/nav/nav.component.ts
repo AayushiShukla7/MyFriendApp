@@ -25,25 +25,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NavComponent implements OnInit {
   data: any = {};
-  //loggedIn: boolean;
-  //currentUser$: Observable<User>;
 
   constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    //this.getCurrentUser();
-    //this.currentUser$ = this.accountService.currentUser$;
   }
  
   login() {
-    //console.log(this.data);
-    // this.accountService.login(this.data).subscribe(response => {
-    //   console.log(response);
-    //   this.loggedIn = true;
-    // }, error => {
-    //   console.log(error);
-    // });
-
     this.accountService.login(this.data).subscribe(response => {
       this.router.navigateByUrl('/members');
     });
@@ -53,15 +41,5 @@ export class NavComponent implements OnInit {
     this.accountService.logout();
     this.router.navigateByUrl('/');
     this.data = {};
-    //this.loggedIn = false;
   }
-
-  // Not needed anymore --> Using AccountService's version 
-  // getCurrentUser() {
-  //   this.accountService.currentUser$.subscribe(user => {
-  //     this.loggedIn = !!user;   // !! --> Turns an object into boolean
-  //   }, error => {
-  //     console.log(error);
-  //   });
-  // }
 }

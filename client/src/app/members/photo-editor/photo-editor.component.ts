@@ -114,6 +114,7 @@ export class PhotoEditorComponent implements OnInit {
       this.http.post(this.baseUrl + 'users/add-photo', formData).subscribe((res:any) => {
         //console.log(res);
         this.member.photos.push(res);
+        this.toastr.info('Image uploaded successfully', '', { positionClass: 'toast-bottom-right' });
         this.removeImage();
       },
       error => {
