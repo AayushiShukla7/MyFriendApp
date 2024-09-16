@@ -1,9 +1,10 @@
 import { CommonModule, JsonPipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, FormsModule, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { ToastrService } from 'ngx-toastr';
 import { SharedModule } from '../_modules/shared.module';
+import { TextInputComponent } from '../_forms/text-input/text-input.component';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,9 @@ import { SharedModule } from '../_modules/shared.module';
     FormsModule,
     CommonModule,
     SharedModule,
-    JsonPipe
+    JsonPipe,
+    TextInputComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
