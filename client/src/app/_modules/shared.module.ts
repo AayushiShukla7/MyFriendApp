@@ -4,6 +4,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FileUploadModule } from 'ng2-file-upload';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -12,13 +13,15 @@ import { FileUploadModule } from 'ng2-file-upload';
     BsDropdownModule,
     ToastrModule,
     TabsModule,
-    FileUploadModule
+    FileUploadModule,
+    ReactiveFormsModule
   ],
   exports: [
     BsDropdownModule,
     ToastrModule,
     TabsModule,
-    FileUploadModule
+    FileUploadModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
