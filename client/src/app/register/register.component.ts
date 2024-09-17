@@ -7,6 +7,7 @@ import { SharedModule } from '../_modules/shared.module';
 import { TextInputComponent } from '../_forms/text-input/text-input.component';
 import { DateInputComponent } from '../_forms/date-input/date-input.component';
 import { daLocale } from 'ngx-bootstrap/chronos';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -25,13 +26,12 @@ import { daLocale } from 'ngx-bootstrap/chronos';
 })
 export class RegisterComponent implements OnInit {
 
-  // @Input() usersFromHomeComponent: any;
   @Output() cancelRegister = new EventEmitter();
-  model: any = {};
   registerForm: FormGroup;
   maxDate: Date;
+  validationErrors: string[] = [];
 
-  constructor(private accountService: AccountService, private toastr: ToastrService, private fb: FormBuilder) {}
+  constructor(private accountService: AccountService, private toastr: ToastrService, private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -66,16 +66,14 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    //console.log(this.model);
-    console.log(this.registerForm.value);
+    //console.log(this.registerForm.value);
 
-    // this.accountService.register(this.model).subscribe(response => {
-    //   console.log(response);
-    //   this.cancel();
-    // }, error => {
-    //   console.log(error);
-    //   this.toastr.error(error.error, "", { positionClass: 'toast-bottom-right' });
-    // });
+    this.accountService.register(this.registerForm.value).subscribe(response => {
+      this.router.navigateByUrl('/members');
+    }, error => {
+      console.log(error);
+      this.validationErrors = error;
+    });
   }
 
   cancel() {

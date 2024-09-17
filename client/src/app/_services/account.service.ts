@@ -20,10 +20,7 @@ export class AccountService {
   login(model: any) {
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
       map((response: User) => {
-        //console.log(response.photoUrl);
         const user = response;
-
-        console.log(user.photoUrl);
 
         if(user) {
           this.currentUserSource.next(user);
