@@ -11,6 +11,7 @@ import { loadingInterceptor } from './_interceptors/loading.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FileDropDirective, FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,6 +26,7 @@ export const appConfig: ApplicationConfig = {
     provideToastr(),
     provideAnimationsAsync(),
     importProvidersFrom(NgxSpinnerModule.forRoot({ type: 'pacman' })),
-    importProvidersFrom([FileUploadModule, FileSelectDirective, FileDropDirective])
+    importProvidersFrom([FileUploadModule, FileSelectDirective, FileDropDirective]),
+    importProvidersFrom(PaginationModule)
   ]
 };
