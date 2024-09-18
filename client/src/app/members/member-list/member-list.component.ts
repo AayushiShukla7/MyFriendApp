@@ -10,6 +10,7 @@ import { UserParams } from '../../_models/userParams';
 import { AccountService } from '../../_services/account.service';
 import { User } from '../../_models/user';
 import { take } from 'rxjs';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 @Component({
   selector: 'app-member-list',
@@ -18,7 +19,8 @@ import { take } from 'rxjs';
     FormsModule,
     CommonModule,
     MemberCardComponent,
-    PaginationModule
+    PaginationModule,
+    ButtonsModule
   ],
   templateUrl: './member-list.component.html',
   styleUrl: './member-list.component.css'
