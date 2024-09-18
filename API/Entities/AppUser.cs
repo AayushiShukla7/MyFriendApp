@@ -20,10 +20,7 @@ namespace API.Entities
         public string Country { get; set; } = string.Empty;
         public ICollection<Photo> Photos { get; set; }
 
-        // Extension Method -The name is very important (Must be - "Get<PropertyName>")
-        //public int GetAge()
-        //{
-        //    return DateOfBirth.CalculateAge();
-        //}
+        public ICollection<UserLike> LikedByUsers { get; set; }
+        public ICollection<UserLike> LikedUsers { get; set; }
     }
 }
