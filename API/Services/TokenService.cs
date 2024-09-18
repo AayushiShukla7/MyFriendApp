@@ -23,7 +23,8 @@ namespace API.Services
             // 1 - Claim (user data i.e., Who are they claiming to be?)
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+                new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
             };
 
             // 2 - Credentials (What key to use? & Which algorithm to use to sign our token?
