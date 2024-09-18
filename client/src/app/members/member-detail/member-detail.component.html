@@ -16,11 +16,11 @@
                 </div>                    
                 <div>
                     <strong>Last Active:</strong>
-                    <p>{{ member.lastActive }}</p>
+                    <p>{{ member.lastActive | timeago:live }}</p>
                 </div>
                 <div>
                     <strong>Member Since:</strong>
-                    <p>{{ member.created }}</p>
+                    <p>{{ member.created | date: 'dd MMM YYYY' }}</p>
                 </div>
             </div>
 

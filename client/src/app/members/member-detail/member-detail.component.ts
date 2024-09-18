@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Member } from '../../_models/member';
 import { MembersService } from '../../_services/members.service';
 import { ActivatedRoute } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe, formatDate } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryModule, NgxGalleryOptions } from '@vinlos/ngx-gallery';
+import { TimeagoModule } from "ngx-timeago";
 
 @Component({
   selector: 'app-member-detail',
@@ -12,7 +13,9 @@ import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryModule, NgxGalleryOptio
   imports: [
     CommonModule,
     TabsModule,
-    NgxGalleryModule 
+    NgxGalleryModule,
+    DatePipe,
+    TimeagoModule
   ],
   templateUrl: './member-detail.component.html',
   styleUrl: './member-detail.component.css'

@@ -12,21 +12,24 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FileDropDirective, FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { TimeagoModule } from 'ngx-timeago';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
     provideHttpClient(withInterceptors([
-      errorInterceptor, 
-      jwtInterceptor,
-      loadingInterceptor
-    ]),),
+        errorInterceptor, 
+        jwtInterceptor,
+        loadingInterceptor
+      ])
+    ),
     { provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } },
     provideToastr(),
     provideAnimationsAsync(),
     importProvidersFrom(NgxSpinnerModule.forRoot({ type: 'pacman' })),
     importProvidersFrom([FileUploadModule, FileSelectDirective, FileDropDirective]),
-    importProvidersFrom(PaginationModule)
+    importProvidersFrom(PaginationModule),
+    importProvidersFrom(TimeagoModule)
   ]
 };

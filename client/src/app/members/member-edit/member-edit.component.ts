@@ -4,12 +4,13 @@ import { User } from '../../_models/user';
 import { AccountService } from '../../_services/account.service';
 import { MembersService } from '../../_services/members.service';
 import { take } from 'rxjs';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { PhotoEditorComponent } from '../photo-editor/photo-editor.component';
+import { TimeagoModule } from 'ngx-timeago';
 
 @Component({
   selector: 'app-member-edit',
@@ -20,7 +21,9 @@ import { PhotoEditorComponent } from '../photo-editor/photo-editor.component';
     TabsModule,
     ToastrModule,
     NgxSpinnerModule,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    DatePipe,
+    TimeagoModule
   ],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
