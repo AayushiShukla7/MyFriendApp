@@ -13,7 +13,8 @@ namespace API.Extensions
             services.AddScoped<ITokenService, TokenService>();  // Token Generation Service
             services.AddScoped<IPhotoService, PhotoService>();  // Photo Upload Service
             services.AddScoped<LogUserActivity>();  // To update the LastActive on successful Login
-            services.AddScoped<ILikesRepository, LikesRepository>();    
+            services.AddScoped<ILikesRepository, LikesRepository>();    // Likes
+            services.AddScoped<IMessageRepository, MessageRepository>();    // Messages
 
             services.AddScoped<IUserRepository, UserRepository>();  // Repository Pattern
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);    // Automapper Injection
