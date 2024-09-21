@@ -6,6 +6,7 @@ import { CommonModule, DatePipe, formatDate } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryModule, NgxGalleryOptions } from '@vinlos/ngx-gallery';
 import { TimeagoModule } from "ngx-timeago";
+import { MemberMessagesComponent } from '../member-messages/member-messages.component';
 
 @Component({
   selector: 'app-member-detail',
@@ -15,7 +16,8 @@ import { TimeagoModule } from "ngx-timeago";
     TabsModule,
     NgxGalleryModule,
     DatePipe,
-    TimeagoModule
+    TimeagoModule,
+    MemberMessagesComponent
   ],
   templateUrl: './member-detail.component.html',
   styleUrl: './member-detail.component.css'
