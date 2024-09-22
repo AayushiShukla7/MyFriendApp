@@ -8,6 +8,7 @@ import { UserParams } from '../_models/userParams';
 import { AccountService } from './account.service';
 import { User } from '../_models/user';
 import { getPaginatedResult, getPaginationHeaders } from './paginationHelper';
+import { Message } from '../_models/message';
 
 
 @Injectable({
