@@ -67,7 +67,10 @@
             <td>{{ message.messageSent }}</td>
 
             <td>
-                <button class="btn btn-danger">Delete</button>
+                <button 
+                    class="btn btn-danger" 
+                    (click)="deleteMessage(message.id)"
+                    (click)="$event.stopPropagation()">Delete</button>
             </td>
         </tr>
     </table>
