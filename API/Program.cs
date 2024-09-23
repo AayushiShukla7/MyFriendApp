@@ -17,28 +17,7 @@ namespace API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            //builder.Services.AddDbContext<DataContext>(options =>
-            //{
-            //    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-            //});
-
-            //builder.Services.AddScoped<ITokenService, TokenService>();
-
             builder.Services.AddApplicationServices(builder.Configuration); // Moved to Extension method
-
-            // Authentication Middleware
-            //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            //    .AddJwtBearer(options =>
-            //    {
-            //        options.TokenValidationParameters = new TokenValidationParameters
-            //        {
-            //            ValidateIssuerSigningKey = true,
-            //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["TokenKey"])),
-            //            ValidateIssuer = false,
-            //            ValidateAudience = false
-            //        };
-            //    });
 
             builder.Services.AddIdentityServices(builder.Configuration);    // Moved to Extension method
 
