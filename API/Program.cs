@@ -1,10 +1,12 @@
 using API.Data;
+using API.Entities;
 using API.Extensions;
 using API.Helpers;
 using API.Interfaces;
 using API.Middleware;
 using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -34,8 +36,10 @@ namespace API
             try
             {
                 var context = services.GetRequiredService<DataContext>();
+                var userManager = services.GetRequiredService<UserManager<AppUser>>();
+
                 await context.Database.MigrateAsync();  // Migrates DB here** [No more ef database update needed, just restart application]
-                await Seed.SeedUsers(context);
+                await Seed.SeedUsers(userManager);
             }
             catch (Exception ex) 
             { 

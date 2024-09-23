@@ -18,7 +18,8 @@ namespace API.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Url = table.Column<string>(type: "text", nullable: true),
                     IsMain = table.Column<bool>(type: "boolean", nullable: false),
-                    AppUserId = table.Column<int>(type: "integer", nullable: false)
+                    AppUserId = table.Column<int>(type: "integer", nullable: false),
+                    PublicId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
