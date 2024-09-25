@@ -27,7 +27,7 @@
                                 <span 
                                     class="text-success" 
                                     *ngIf="message.dateRead && message.senderUsername !== username">
-                                    (read {{ message.dateRead }})
+                                    (read {{ message.dateReade | timeago }})
                                 </span>
                             </small>
                         </div>
