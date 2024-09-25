@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from './_modules/shared.module';
 import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
 import { FileUploadModule } from 'ng2-file-upload';
+import { HasRoleDirective } from './_directives/has-role.directive';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     RouterLink,
     NgxSpinnerModule,
     NgxSpinnerComponent,
-    FileUploadModule
+    FileUploadModule,
+    HasRoleDirective
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

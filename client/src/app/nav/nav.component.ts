@@ -5,6 +5,7 @@ import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { HasRoleDirective } from '../_directives/has-role.directive';
 // import { Observable } from 'rxjs';
 // import { User } from '../_models/user';
 
@@ -18,7 +19,8 @@ import { ToastrService } from 'ngx-toastr';
     RouterOutlet,
     RouterLink,
     TitleCasePipe,
-    LowerCasePipe
+    LowerCasePipe,
+    HasRoleDirective
   ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'

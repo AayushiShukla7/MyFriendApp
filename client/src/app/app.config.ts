@@ -13,6 +13,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { FileDropDirective, FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TimeagoModule } from 'ngx-timeago';
+import { HasRoleDirective } from './_directives/has-role.directive';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,6 +31,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(NgxSpinnerModule.forRoot({ type: 'pacman' })),
     importProvidersFrom([FileUploadModule, FileSelectDirective, FileDropDirective]),
     importProvidersFrom(PaginationModule),
-    importProvidersFrom(TimeagoModule.forRoot())
+    importProvidersFrom(TimeagoModule.forRoot()),
+    importProvidersFrom(HasRoleDirective)
   ]
 };
