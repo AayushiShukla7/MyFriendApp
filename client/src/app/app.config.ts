@@ -30,6 +30,6 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(NgxSpinnerModule.forRoot({ type: 'pacman' })),
     importProvidersFrom([FileUploadModule, FileSelectDirective, FileDropDirective]),
     importProvidersFrom(PaginationModule),
-    importProvidersFrom(TimeagoModule)
+    importProvidersFrom(TimeagoModule.forRoot())
   ]
 };
