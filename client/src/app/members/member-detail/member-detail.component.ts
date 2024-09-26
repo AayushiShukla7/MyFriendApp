@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Member } from '../../_models/member';
-import { MembersService } from '../../_services/members.service';
 import { ActivatedRoute } from '@angular/router';
-import { CommonModule, DatePipe, formatDate } from '@angular/common';
+import { AsyncPipe, CommonModule, DatePipe, formatDate } from '@angular/common';
 import { TabDirective, TabsetComponent, TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryModule, NgxGalleryOptions } from '@vinlos/ngx-gallery';
 import { TimeagoModule } from "ngx-timeago";
 import { MemberMessagesComponent } from '../member-messages/member-messages.component';
 import { MessageService } from '../../_services/message.service';
 import { Message } from '../../_models/message';
+import { PresenceService } from '../../_services/presence.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -19,7 +19,8 @@ import { Message } from '../../_models/message';
     NgxGalleryModule,
     DatePipe,
     TimeagoModule,
-    MemberMessagesComponent
+    MemberMessagesComponent,
+    AsyncPipe
   ],
   templateUrl: './member-detail.component.html',
   styleUrl: './member-detail.component.css'
@@ -33,7 +34,7 @@ export class MemberDetailComponent implements OnInit {
   activeTab: TabDirective;
   messages: Message[] = [];
 
-  constructor(private memberService: MembersService, private route: ActivatedRoute, private messageService: MessageService) {}
+  constructor(public presenceService : PresenceService, private route: ActivatedRoute, private messageService: MessageService) {}
 
   ngOnInit(): void {
     //this.loadMember();
