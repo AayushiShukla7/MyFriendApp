@@ -14,6 +14,7 @@ import { FileDropDirective, FileSelectDirective, FileUploadModule } from 'ng2-fi
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TimeagoModule } from 'ngx-timeago';
 import { HasRoleDirective } from './_directives/has-role.directive';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -32,6 +33,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom([FileUploadModule, FileSelectDirective, FileDropDirective]),
     importProvidersFrom(PaginationModule),
     importProvidersFrom(TimeagoModule.forRoot()),
-    importProvidersFrom(HasRoleDirective)
+    importProvidersFrom(HasRoleDirective),
+    importProvidersFrom(ModalModule.forRoot())
   ]
 };
