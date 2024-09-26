@@ -69,7 +69,8 @@ namespace API
 
             app.MapControllers();
 
-            app.MapHub<PresenceHub>("hubs/presence");   // Needed for SignalR
+            app.MapHub<PresenceHub>("hubs/presence");   // Needed for SignalR - Presence Tracker
+            app.MapHub<MessageHub>("hubs/message");   // Needed for SignalR - Message Hub
 
             await app.RunAsync();
         }
