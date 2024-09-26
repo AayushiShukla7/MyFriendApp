@@ -2,6 +2,7 @@
 using API.Helpers;
 using API.Interfaces;
 using API.Services;
+using API.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions
@@ -15,6 +16,8 @@ namespace API.Extensions
             services.AddScoped<LogUserActivity>();  // To update the LastActive on successful Login
             services.AddScoped<ILikesRepository, LikesRepository>();    // Likes
             services.AddScoped<IMessageRepository, MessageRepository>();    // Messages
+
+            services.AddSingleton<PresenceTracker>();   // Presence Tracker - SignalR
 
             services.AddScoped<IUserRepository, UserRepository>();  // Repository Pattern
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);    // Automapper Injection
