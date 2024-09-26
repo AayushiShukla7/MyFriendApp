@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Message } from '../../_models/message';
 import { MessageService } from '../../_services/message.service';
 import { FormsModule, NgForm } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { TimeagoModule } from 'ngx-timeago';
 
 @Component({
@@ -11,7 +11,8 @@ import { TimeagoModule } from 'ngx-timeago';
   imports: [
     FormsModule,
     CommonModule,
-    TimeagoModule
+    TimeagoModule,
+    AsyncPipe
   ],
   templateUrl: './member-messages.component.html',
   styleUrl: './member-messages.component.css'
@@ -23,7 +24,7 @@ export class MemberMessagesComponent implements OnInit {
   @Input() username: string;
   messageContent: string;
 
-  constructor(private messageService: MessageService) {}
+  constructor(public messageService: MessageService) {}
 
   ngOnInit(): void {
   } 
