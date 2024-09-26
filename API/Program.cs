@@ -56,7 +56,8 @@ namespace API
             app.UseMiddleware<ExceptionMiddleware>();       // Custom Exception Middleware
 
             app.UseCors(options => 
-                options.WithOrigins("http://localhost:4200", "https://localhost:4200")
+                options.WithOrigins("https://localhost:4200")
+                .AllowCredentials()     // For SignalR
                 .AllowAnyMethod()
                 .AllowAnyHeader());     
 
