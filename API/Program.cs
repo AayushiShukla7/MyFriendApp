@@ -1,15 +1,10 @@
 using API.Data;
 using API.Entities;
 using API.Extensions;
-using API.Helpers;
-using API.Interfaces;
 using API.Middleware;
-using API.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using API.SignalR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace API
 {
@@ -22,6 +17,8 @@ namespace API
             builder.Services.AddApplicationServices(builder.Configuration); // Moved to Extension method
 
             builder.Services.AddIdentityServices(builder.Configuration);    // Moved to Extension method
+
+            builder.Services.AddSignalR();      // Added for user active status identification
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -70,6 +67,8 @@ namespace API
             app.UseAuthorization(); // Has to be #2
 
             app.MapControllers();
+
+            app.MapHub<PresenceHub>("hubs/presence");   // Needed for SignalR
 
             await app.RunAsync();
         }

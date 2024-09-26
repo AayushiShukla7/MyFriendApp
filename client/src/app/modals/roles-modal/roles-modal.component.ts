@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
@@ -9,7 +9,8 @@ import { User } from '../../_models/user';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    TitleCasePipe
   ],
   templateUrl: './roles-modal.component.html',
   styleUrl: './roles-modal.component.css'
