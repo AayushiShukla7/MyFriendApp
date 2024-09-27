@@ -74,12 +74,7 @@ namespace API.Data
             return await _context.Users
                 .Include(p => p.Photos)     // Eager loading
                 .ToListAsync();
-        }
-
-        public async Task<bool> SaveAllAsync()
-        {
-            return await _context.SaveChangesAsync() > 0;       // '> 0' check => Execute only if there are changes to make (**more than 0 rows affected)
-        }
+        }              
 
         public void Update(AppUser user)
         {

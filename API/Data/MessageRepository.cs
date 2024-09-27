@@ -119,11 +119,6 @@ namespace API.Data
             }
 
             return _mapper.Map<IEnumerable<MessageDto>>(messages);
-        }
-
-        public async Task<bool> SaveAllAsync()
-        {
-            return await _context.SaveChangesAsync() > 0;   // Executes only if there are any changes made**
-        }        
+        }       
     }
 }

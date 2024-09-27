@@ -14,12 +14,14 @@ namespace API.Extensions
             services.AddScoped<ITokenService, TokenService>();  // Token Generation Service
             services.AddScoped<IPhotoService, PhotoService>();  // Photo Upload Service
             services.AddScoped<LogUserActivity>();  // To update the LastActive on successful Login
-            services.AddScoped<ILikesRepository, LikesRepository>();    // Likes
-            services.AddScoped<IMessageRepository, MessageRepository>();    // Messages
+            
+            //services.AddScoped<ILikesRepository, LikesRepository>();    // Likes
+            //services.AddScoped<IMessageRepository, MessageRepository>();    // Messages
+            //services.AddScoped<IUserRepository, UserRepository>();  // Repository Pattern
+            services.AddScoped<IUnitOfWork, UnitOfWork>();      // Unit of Work pattern => Replaces DI
 
             services.AddSingleton<PresenceTracker>();   // Presence Tracker - SignalR
-
-            services.AddScoped<IUserRepository, UserRepository>();  // Repository Pattern
+            
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);    // Automapper Injection
 
             services.AddDbContext<DataContext>(options =>
