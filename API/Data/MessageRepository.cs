@@ -43,6 +43,14 @@ namespace API.Data
                 .FirstOrDefaultAsync(x => x.Name == groupName);
         }
 
+        public async Task<Group> GetGroupForConnection(string connectionId)
+        {
+            return await _context.Groups
+                .Include(x => x.Connections)
+                .Where(c => c.Connections.Any(x => x.ConnectionId == connectionId))
+                .FirstOrDefaultAsync();
+        }
+
         #endregion Group Management
 
         public void AddMessage(Message message)
@@ -116,6 +124,6 @@ namespace API.Data
         public async Task<bool> SaveAllAsync()
         {
             return await _context.SaveChangesAsync() > 0;   // Executes only if there are any changes made**
-        }
+        }        
     }
 }

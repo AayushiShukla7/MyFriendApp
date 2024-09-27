@@ -6,8 +6,10 @@
             new Dictionary<string, List<string>>();
 
         // When a user connects
-        public Task UserConnected(string username,string connectionId)
+        public Task<bool> UserConnected(string username,string connectionId)
         {
+            bool isOnline = false;
+
             // To make Dictionary Thread-Safe
             lock(OnlineUsers)
             {
@@ -18,30 +20,34 @@
                 else
                 {
                     OnlineUsers.Add(username, new List<string> { connectionId });   // Adds a new entry for this user in the dictionary
+                    isOnline = true;
                 }
             }
 
-            return Task.CompletedTask;
+            return Task.FromResult(isOnline);
         }
 
         // When a user disconnects
-        public Task UserDisconnected(string username, string connectionId)
+        public Task<bool> UserDisconnected(string username, string connectionId)
         {
+            bool isOffline = false;
+
             // To make Dictionary Thread-Safe
             lock (OnlineUsers)
             {
                 if (OnlineUsers.ContainsKey(username))
-                    return Task.CompletedTask;
+                    return Task.FromResult(isOffline);
 
                 OnlineUsers[username].Remove(connectionId); // removes all connections of a user
 
                 if (OnlineUsers[username].Count == 0)
                 {
                     OnlineUsers.Remove(username);   // removes the user entry in the dictionary
+                    isOffline = true;
                 }
             }
 
-            return Task.CompletedTask;
+            return Task.FromResult(isOffline);
         }
 
         // Fetch all users connected

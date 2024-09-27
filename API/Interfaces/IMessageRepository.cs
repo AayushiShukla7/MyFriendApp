@@ -10,6 +10,8 @@ namespace API.Interfaces
 
         void AddGroup(Group group);
 
+        Task<Group> GetGroupForConnection(string connectionId);
+
         void RemoveConnection(Connection connection);
 
         Task<Connection> GetConnection(string connectionId);
