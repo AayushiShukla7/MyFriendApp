@@ -56,5 +56,18 @@
 
             return Task.FromResult(onlineUsers);
         }
+
+        //Fetch all connections (live) for a user
+        public Task<List<string>> GetConnectionsForUser(string username)
+        {
+            List<string> connectionIds;
+
+            lock(OnlineUsers)
+            {
+                connectionIds = OnlineUsers.GetValueOrDefault(username);
+            }
+
+            return Task.FromResult(connectionIds);
+        }
     }
 }

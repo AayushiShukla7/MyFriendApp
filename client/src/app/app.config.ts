@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, RouteReuseStrategy } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -15,6 +15,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TimeagoModule } from 'ngx-timeago';
 import { HasRoleDirective } from './_directives/has-role.directive';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { AppRouteReuseStrategy } from './_services/AppRouteReuseStrategy';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -34,6 +35,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(PaginationModule),
     importProvidersFrom(TimeagoModule.forRoot()),
     importProvidersFrom(HasRoleDirective),
-    importProvidersFrom(ModalModule.forRoot())
+    importProvidersFrom(ModalModule.forRoot()),
+    { provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy }
   ]
 };

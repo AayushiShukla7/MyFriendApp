@@ -3,7 +3,8 @@ import { environment } from '../../environments/environment.development';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../_models/user';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, take } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class PresenceService {
   private onlineUsersSource = new BehaviorSubject<string[]>([]);
   onlineUsers$ = this.onlineUsersSource.asObservable();
 
-  constructor(private toastr: ToastrService) { }
+  constructor(private toastr: ToastrService, private router: Router) { }
 
   createHubConnection(user: User) {
     this.hubConnection = new HubConnectionBuilder()
@@ -40,7 +41,14 @@ export class PresenceService {
 
     this.hubConnection.on('GetOnlineUsers', (usernames: string[]) => {
       this.onlineUsersSource.next(usernames);
-    })
+    });
+
+    this.hubConnection.on('NewMessageReceived', ({username, knownAs}) => {
+      this.toastr.info(knownAs + ' has send you a new message!', '', { positionClass: 'toast-bottom-right' })
+      .onTap
+      .pipe(take(1))
+      .subscribe(() => this.router.navigateByUrl('/members/' + username + '?tab=3'));
+    });
   }
 
   stopHubConnection() {

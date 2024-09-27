@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Member } from '../../_models/member';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AsyncPipe, CommonModule, DatePipe, formatDate } from '@angular/common';
 import { TabDirective, TabsetComponent, TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryModule, NgxGalleryOptions } from '@vinlos/ngx-gallery';
@@ -38,10 +38,13 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
   messages: Message[] = [];
   user: User;
 
-  constructor(public presenceService : PresenceService, private route: ActivatedRoute, private messageService: MessageService, private accountService: AccountService) {
+  constructor(public presenceService : PresenceService, private route: ActivatedRoute, private messageService: MessageService, private accountService: AccountService, private router: Router) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
       this.user = user;
-    })
+    });
+
+    // So as the routes are roloaded with fresh data each call (and not reuse the cached route data)
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }  
 
   ngOnInit(): void {
