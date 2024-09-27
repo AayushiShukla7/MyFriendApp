@@ -28,7 +28,7 @@ namespace API.Helpers
             /* Adds "Z" to the end of the client returned date time value. This represents the UTC time and browser converts it to the local datetime by itself.
              * "messageSent":"2024-09-26T16:27:13.8519073Z"
             */
-            CreateMap<DateTime, DateTime>().ConvertUsing(d => DateTime.SpecifyKind(d, DateTimeKind.Utc));
+            // CreateMap<DateTime, DateTime>().ConvertUsing(d => DateTime.SpecifyKind(d, DateTimeKind.Utc));
         }
     }
 }
