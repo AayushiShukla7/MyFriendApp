@@ -20,6 +20,7 @@ export class AppRouteReuseStrategy implements BaseRouteReuseStrategy {
     //   return (future.routeConfig === curr.routeConfig) || future.data.reuseComponent;
     // }
 
+    // So as the routes are roloaded with fresh data each call (and not reuse the cached route data)
     public shouldReuseRoute(): boolean {
       return false;
     }

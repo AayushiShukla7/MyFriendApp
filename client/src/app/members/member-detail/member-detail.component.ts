@@ -42,9 +42,6 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
       this.user = user;
     });
-
-    // So as the routes are roloaded with fresh data each call (and not reuse the cached route data)
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }  
 
   ngOnInit(): void {
