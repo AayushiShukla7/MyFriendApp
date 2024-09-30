@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/client",
+            "outputPath": "../API/wwwroot",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -110,6 +110,14 @@
               "./node_modules/ngx-spinner/animations/pacman.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "../API/wwwroot",
+            "netlifyToken": "nfp_951yjZbBiMxGY8iKcg6B78XCEhqFh2vJ65e7",
+            "siteId": ""
           }
         }
       }

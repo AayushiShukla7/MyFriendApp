@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using API.Data;
 using API.Entities;
 using API.Extensions;
@@ -67,10 +68,15 @@ namespace API
 
             app.UseAuthorization(); // Has to be #2
 
+            app.UseDefaultFiles();      // Use static files (If found - index.html)
+            app.UseStaticFiles();
+
             app.MapControllers();
 
             app.MapHub<PresenceHub>("hubs/presence");   // Needed for SignalR - Presence Tracker
             app.MapHub<MessageHub>("hubs/message");   // Needed for SignalR - Message Hub
+
+            app.MapFallbackToController("Index", "Fallback");
 
             await app.RunAsync();
         }
