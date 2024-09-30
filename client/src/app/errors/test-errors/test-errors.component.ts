@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-test-errors',
@@ -11,7 +12,7 @@ import { Component } from '@angular/core';
 })
 export class TestErrorsComponent {
 
-  baseUrl = "https://localhost:7118/api/";
+  baseUrl = environment.apiUrl;
   validationErrors: string[] = [];
 
   constructor(private http: HttpClient) {}
