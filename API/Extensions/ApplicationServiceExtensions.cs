@@ -26,7 +26,8 @@ namespace API.Extensions
 
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+                //options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
             });
 
             services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));    // Image Upload API

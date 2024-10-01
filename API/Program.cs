@@ -28,6 +28,8 @@ namespace API
 
             var app = builder.Build();
 
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
             // Data Seeding
             using var scope = app.Services.CreateScope();
             var services = scope.ServiceProvider;
